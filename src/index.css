@@ -1,0 +1,613 @@
+:root {
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Primary Palette: White Background & Black Text */
+  --bg-dark: #ffffff;
+  --bg-dark-secondary: #f8fafc;
+  --bg-dark-card: #ffffff;
+  --bg-dark-glass: rgba(255, 255, 255, 0.9);
+  
+  --primary: #0f172a;
+  --primary-contrast: #ffffff;
+  --primary-glow: rgba(2, 132, 199, 0.2);
+
+  --secondary: #0284c7;
+  --secondary-light: #0369a1;
+  --secondary-dark: #075985;
+  --secondary-glow: rgba(2, 132, 199, 0.2);
+
+  --accent-gold: #0284c7;
+  --accent-gold-light: #0369a1;
+  --accent-gold-glow: rgba(2, 132, 199, 0.2);
+
+  --accent-emerald: #059669;
+  --accent-cyan: #0284c7;
+
+  --text-primary: #0a0a0a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+
+  --border-subtle: #e2e8f0;
+  --border-glow: rgba(2, 132, 199, 0.35);
+  --border-gold: rgba(2, 132, 199, 0.3);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 32px -4px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 25px rgba(2, 132, 199, 0.15);
+  --shadow-gold-glow: 0 0 25px rgba(2, 132, 199, 0.15);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: clamp(65px, 8vw, 85px);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-family: var(--font-body);
+  background-color: #ffffff;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #ffffff;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+  border: 2px solid #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Unified Global Typography Scale */
+h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.85rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #0f172a;
+  line-height: 1.18;
+  overflow-wrap: break-word;
+}
+
+h2, .section-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3.2vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  line-height: 1.22;
+  overflow-wrap: break-word;
+}
+
+h3, .card-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: #0f172a;
+  line-height: 1.25;
+  overflow-wrap: break-word;
+}
+
+h4, .subcard-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #0f172a;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+
+p, span, a, label {
+  overflow-wrap: break-word;
+}
+
+/* Utilities */
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 4%;
+  padding-right: 4%;
+  box-sizing: border-box;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #0a0a0a 20%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #0a0a0a 30%, #0369a1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-panel {
+  background: #ffffff;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-md);
+}
+
+.glass-panel:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 12px 30px -4px rgba(2, 132, 199, 0.12);
+}
+
+/* Badge pill */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.38rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  color: #0284c7;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.08);
+}
+
+.badge-pill.gold {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.08);
+}
+
+/* Modern Primary Buttons: Solid Dark Charcoal with clean crisp look */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.85rem 1.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.3);
+  background: #1e293b;
+  color: #ffffff;
+}
+
+/* Secondary Buttons: Clean White with Subtle Border */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.85rem 1.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.btn-secondary:hover {
+  background: #f8fafc;
+  border-color: #0284c7;
+  color: #0284c7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Sky Blue Accent Button */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.85rem 1.75rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+  transition: all 0.25s ease;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #0369a1, #075985);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.4);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: pulseGlow 8s ease-in-out infinite alternate;
+}
+
+/* Responsive Section Spacing */
+.section-padding {
+  padding: clamp(3.5rem, 6.5vw, 6.5rem) 0 clamp(2.5rem, 5vw, 5rem);
+}
+
+/* Image & Media Responsiveness */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
+  height: 100%;
+}
+
+/* Touch targets and interactions (minimum 44px for accessibility on touch devices) */
+button, a, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Base button minimum touch heights for accessibility */
+.btn-primary, .btn-secondary, .btn-gold {
+  min-height: 44px;
+}
+
+/* Responsive Floating Back-to-Top Button */
+.floating-back-to-top {
+  position: fixed !important;
+  bottom: calc(1.75rem + env(safe-area-inset-bottom, 0px)) !important;
+  right: calc(4% + env(safe-area-inset-right, 0px)) !important;
+  z-index: 45 !important;
+  width: 48px !important;
+  height: 48px !important;
+}
+
+/* Prevent unwanted horizontal overflow globally */
+body, html, #root {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Section-level containment to prevent absolute ambient orbs from causing horizontal bleed */
+#about, #reviews, #contact {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   Comprehensive Responsive Breakpoint Matrix:
+   - Extra Large / Ultra-Wide Displays (>= 1440px)
+   - Standard Desktops (1200px - 1439px)
+   - Small Laptops / Landscape Tablets (1025px - 1199px)
+   - Tablets Portrait / Medium Screens (769px - 1024px)
+   - Phablets / Foldables / Large Phones (481px - 768px)
+   - Standard Mobile Phones (361px - 480px)
+   - Compact Displays (<= 360px - iPhone SE, Galaxy Z Fold)
+   - Mobile Landscape Orientation
+   ========================================================================== */
+
+/* 1. Large Desktops & Wide Displays (>= 1200px) */
+@media (min-width: 1200px) {
+  .footer-grid {
+    grid-template-columns: 0.95fr 1.15fr 1.25fr !important;
+    gap: clamp(2.5rem, 4vw, 4.5rem) !important;
+  }
+  .metrics-strip-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  .contact-cards-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (min-width: 1100px) {
+  .apsec-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+}
+
+/* 2. Small Laptops & Landscape Tablets (1025px - 1199px) */
+@media (min-width: 1025px) and (max-width: 1199px) {
+  .footer-grid {
+    grid-template-columns: 0.95fr 1.15fr 1.25fr !important;
+    gap: 2.5rem !important;
+  }
+  .metrics-strip-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1rem !important;
+  }
+  .contact-cards-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.25rem !important;
+  }
+}
+
+/* 3. Tablets Portrait & Medium Screens (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section-padding {
+    padding: clamp(3rem, 5vw, 4.5rem) 0 clamp(2rem, 4vw, 3.5rem);
+  }
+  .glow-orb {
+    filter: blur(60px);
+    opacity: 0.45;
+  }
+  .apsec-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1rem !important;
+  }
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2.25rem !important;
+  }
+  .footer-grid > :nth-child(3) {
+    grid-column: span 2;
+  }
+  .metrics-strip-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+  .contact-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+  .contact-cards-grid > :nth-child(3) {
+    grid-column: span 2;
+  }
+}
+
+/* 4. Phablets & Large Phones (481px - 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .section-padding {
+    padding: clamp(2.5rem, 5vw, 3.75rem) 0 clamp(1.75rem, 4vw, 2.75rem);
+  }
+
+  .floating-back-to-top {
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
+    right: calc(4% + env(safe-area-inset-right, 0px)) !important;
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .glow-orb {
+    filter: blur(40px);
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+
+  .apsec-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 1rem !important;
+    padding: 0.5rem 0.25rem 0.85rem !important;
+    scrollbar-width: none !important;
+  }
+  .apsec-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .apsec-card {
+    flex: 0 0 82% !important;
+    min-width: 260px !important;
+    max-width: 320px !important;
+    scroll-snap-align: center !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .metrics-strip-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+    margin-bottom: 2.25rem !important;
+  }
+
+  .contact-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    margin-bottom: 2.25rem !important;
+  }
+}
+
+/* 5. Mobile Phones (361px - 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .section-padding {
+    padding: 2.5rem 0 1.75rem;
+  }
+
+  .btn-primary, .btn-secondary, .btn-gold {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    min-height: 44px;
+  }
+
+  .apsec-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 0.85rem !important;
+    padding: 0.5rem 0.25rem 0.85rem !important;
+    scrollbar-width: none !important;
+  }
+  .apsec-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .apsec-card {
+    flex: 0 0 84% !important;
+    min-width: 250px !important;
+    max-width: 310px !important;
+    scroll-snap-align: center !important;
+  }
+
+  .metrics-strip-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem !important;
+  }
+}
+
+/* 6. Compact Mobile Displays (<= 360px - e.g. iPhone SE, Galaxy Z Fold outer) */
+@media (max-width: 360px) {
+  .container {
+    padding-left: 3.5%;
+    padding-right: 3.5%;
+  }
+
+  .section-padding {
+    padding: 2rem 0 1.5rem;
+  }
+
+  .floating-back-to-top {
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px)) !important;
+    right: calc(3.5% + env(safe-area-inset-right, 0px)) !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .btn-primary, .btn-secondary, .btn-gold {
+    padding: 0.7rem 0.95rem;
+    font-size: 0.8125rem;
+  }
+
+  .metrics-strip-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.6rem !important;
+  }
+
+  .apsec-card {
+    flex: 0 0 88% !important;
+    min-width: 240px !important;
+    max-width: 290px !important;
+    padding: 1.15rem 0.95rem !important;
+  }
+}
+
+/* 7. Mobile Landscape Orientation (short viewports) */
+@media (max-height: 520px) and (orientation: landscape) {
+  .section-padding {
+    padding: 2rem 0 1.5rem;
+  }
+  .floating-back-to-top {
+    bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px)) !important;
+    right: calc(4% + env(safe-area-inset-right, 0px)) !important;
+    width: 38px !important;
+    height: 38px !important;
+  }
+}
+
+/* 8. Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 9. Global Fixed Navbar */
+.app-navbar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  transform: translateZ(0);
+}
+
+
+
